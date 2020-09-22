@@ -1,0 +1,65 @@
+<script>
+    // ALWAYS DECLARE THE VARIABLE YOU WANT TO USE FIRST 
+    var hero_name, hero_location;
+    var step;
+	var questions_array = [
+	'What 5-letter word becomes shorter when you add two letters to it?',
+	'I’m so fragile that if you say my name, you’ll break me. What am I?',
+	'What goes up and down, but always remains in the same place?',
+	'What is blue and smells like red paint?',
+	'Some months have 31 days, others have 30 days, but how many have 28 days?'];
+	
+	var answer_array = ['short', 'silence', 'stairs', 'blue paint', '12' ];
+	
+	function ask() {
+		// generate a random number between 0 and the size of our array
+		const index = Math.floor(Math.random() * 4);
+		// prompt the question and store the answer in a const
+		const user_answer = prompt(questions_array[index]);
+		// return if true or false
+		return user_answer === answer_array[index];
+	}
+	
+    // activity 2.1
+    document.writeln("<h1> WELCOME TO HERO MAKER 9000</h1>");
+    function introduction() {
+        step=0;
+        hero_name = prompt("what is your name?");
+        hero_location  = prompt("where are you located?");
+        document.writeln("<p>Hello "+ hero_name +", <br> welcome to "+ hero_location +"!<p>");
+        // this line is added after activity 2.2
+        document.write(`<button onclick="Riddler_appearance()">Continue</button>"`);
+        console.log(step);
+    }
+    introduction();
+    // ACTIVITY 2.2
+    
+    function Riddler_appearance() {
+        step ++;
+        const riddler_img = "https://lh4.googleusercontent.com/-Q23JchN7b_Q/TWwjZV_SPHI/AAAAAAAACkE/y7WmkB1KEgc/s1600/DCUC+The+Riddler+3.jpg";
+        document.writeln("<p> Suddenly the Riddler appears!</p>");
+        document.writeln("You dare stand in front of me! You fool! ");
+        document.writeln(`<p><img src= "${riddler_img}" alt= "riddler" width = "350" length = "350"></p>`);
+        document.writeln(`<button onclick="Riddle()">Challenge The Riddler</button>`);
+    }
+    // ACTIVITY 2.3
+    function Riddle() {
+        step++;
+        var levelPassed = ask();
+        if(levelPassed) {
+    	    alert("Well done "+ hero_name+ "! You have defeated the riddler!");
+            document.body.innerHTML = `<img src="https://th.bing.com/th/id/OIP.31eZsm2jTgUOD475qmxWsQHaH_?pid=Api&rs=1">`;
+            document.write(`<button onclick="new_game()">Play again</button>`);
+        } else { 
+            alert("You answered wrongfully and "+ hero_name +" lost the battle!");
+            document.body.innerHTML = `<img src="https://st2.depositphotos.com/1575949/7956/v/950/depositphotos_79565150-stock-illustration-game-over-red-stamp-text.jpg" width = "700" height = "700">`
+            document.write(`<button onclick="new_game()">Play again</button>`);
+        }
+    }
+    function new_game() {
+        document.body.innerHTML = '';
+        introduction();
+    }
+	
+
+</script>

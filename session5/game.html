@@ -1,0 +1,107 @@
+<script>
+    // ALWAYS DECLARE THE VARIABLE YOU WANT TO USE FIRST 
+    var hero_name, hero_location;
+	var questions_array = [
+	'What 5-letter word becomes shorter when you add two letters to it?',
+	'I’m so fragile that if you say my name, you’ll break me. What am I?',
+	'What goes up and down, but always remains in the same place?',
+	'What is blue and smells like red paint?',
+	'Some months have 31 days, others have 30 days, but how many have 28 days?'];
+	
+	var answer_array = ['short', 'silence', 'stairs', 'blue paint', '12' ];
+	
+	function ask() {
+		// generate a random number between 0 and the size of our array
+		const index = Math.floor(Math.random() * 4);
+		// prompt the question and store the answer in a const
+		const user_answer = prompt(questions_array[index]);
+		// return if true or false
+		return user_answer === answer_array[index];
+	}
+	
+    document.writeln("<h1> WELCOME TO HERO MAKER 9000</h1>");
+    function introduction() {
+        hero_name = prompt("what is your name?");
+        hero_location  = prompt("where are you located?");
+		const story_intro = `<h3>Hello ${hero_name}! <br> You are finally home. ${hero_location} needs you! <br> A group of powerful evil people took sieged the city and we need you to rescue us!</h3>`;
+        document.writeln(story_intro);
+        document.write(`<button onclick="level1()">Continue</button>`);
+    }
+    introduction();
+    
+    function level1() {
+		document.body.innerHTML = '';
+		document.writeln("<h1> LEVEL 1 : The riddler</h1>");
+        const riddler_img = "https://lh4.googleusercontent.com/-Q23JchN7b_Q/TWwjZV_SPHI/AAAAAAAACkE/y7WmkB1KEgc/s1600/DCUC+The+Riddler+3.jpg";
+        document.writeln("<p> Suddenly, a wild Riddler appears!</p>");
+        document.writeln("You dare stand in front of me! You fool! ");
+        document.writeln(`<p><img src= "${riddler_img}" alt= "riddler" width = "350" length = "350"></p>`);
+        document.writeln(`<button onclick="Riddle()">Challenge the Riddler!</button>`);
+    }
+    function Riddle() {
+//		var riddle_answer = prompt("Some months have 31 days, others have 30 days, but how many have 28 days?");
+//		if(riddle_answer ==="12") {
+        var levelPassed = ask();
+        if(levelPassed) {
+    	    alert("Well done "+ hero_name+ "! You have defeated the riddler!");
+            document.body.innerHTML = `<img src="https://th.bing.com/th/id/OIP.31eZsm2jTgUOD475qmxWsQHaH_?pid=Api&rs=1">`;
+            document.write(`<button onclick="level2()">Next level</button>`);
+        } else { 
+            alert("You answered wrongfully and "+ hero_name +" lost the battle!");
+            document.body.innerHTML = `<img src="https://st2.depositphotos.com/1575949/7956/v/950/depositphotos_79565150-stock-illustration-game-over-red-stamp-text.jpg" width = "700" height = "700">`
+            document.write(`<button onclick="new_game()">Play again</button>`);
+        }
+    }
+    function new_game() {
+        document.body.innerHTML = '';
+        introduction();
+    }
+	function level2() {
+		const storyline = ` <h3> Thanks to you ${hero_name} the riddler has been defeated! <br> ${hero_location} still needs your help to defeat the remaining evil forces.<br> <h3>` ;
+		document.write(`<button onclick="ultron()">Continue</button>`);
+	}
+	function ultron(){
+		const ultron_pic = "https://th.bing.com/th/id/OIP.QZlqWiu7ajATIkFUjBkwzAHaR7?pid=Api&rs=1";
+		document.body.innerHTML = '';
+		document.writeln("<h2> HERE COMES ULTRON!</h2>");
+		document.writeln(`${hero_name} manages to get to ultron's power box but it is password protect!`);
+		document.write(`<button onclick="ultron_box()">Find the password</button>`);
+	}
+	function ultron_box() {
+		var correct = false;
+		const password = generate_password();
+		while (!correct) {
+			var guess = prompt("ENTER 4 DIGITS PIN NUMBER:");
+			if(guess === password) {
+				correct = true;
+			} else {
+				alert(`The password is incorrect (o represents a correct digit, x reprensent an incorrect one): \n ${compare_pw(password, guess)}`);
+			}
+		}
+	}
+	function compare_pw(pw, guess) {
+		console.log(pw);
+		console.log(guess);
+		var validation = '';
+		for (var i = 0; i < pw.length; ++i){
+			if (pw.charAt(i) === guess.charAt(i)) {
+				validation += 'o';
+			} else {
+				validation += 'x';
+			}
+		}
+		return validation;
+	}
+	function generate_password() {
+		//returns a random number between 0 and 9999
+		var num_pw = Math.floor(Math.random() * 9999);
+		console.log(num_pw);
+		if (num_pw < 10) {
+			return "000"+ num_pw;
+		} else if (num_pw <100) {
+			return "00" + num_pw;
+		} else if (num_pw < 1000) {
+			return '0' + num_pw;
+		}else return '' + num_pw;
+	}
+</script>

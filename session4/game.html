@@ -1,0 +1,42 @@
+<script>
+    // ALWAYS DECLARE THE VARIABLE YOU WANT TO USE FIRST 
+    var hero_name, hero_location;
+    // activity 2.1
+    document.writeln("<h1> WELCOME TO HERO MAKER 9000</h1>");
+    function introduction() {
+        hero_name = prompt("what is your name?");
+        hero_location  = prompt("where are you located?");
+		const story_intro = `<h3>Hello ${hero_name}! <br> You are finally home. ${hero_location} needs you! <br> A group of powerful evil people took sieged the city and we need you to rescue us!</h3>`;
+        document.writeln(story_intro);
+        // this line is added after activity 2.2
+        document.write(`<button onclick="Riddler_appearance()">Continue</button>`);
+    }
+    introduction();
+    // ACTIVITY 2.2
+    
+    function Riddler_appearance() {
+        const riddler_img = "https://lh4.googleusercontent.com/-Q23JchN7b_Q/TWwjZV_SPHI/AAAAAAAACkE/y7WmkB1KEgc/s1600/DCUC+The+Riddler+3.jpg";
+        document.writeln("<p> Suddenly the Riddler appears!</p>");
+        document.writeln("You dare stand in front of me! You fool! ");
+        document.writeln(`<p><img src= "${riddler_img}" alt= "riddler" width = "350" length = "350"></p>`);
+        document.writeln(`<button onclick="Riddle()">Challenge The Riddler</button>`);
+    }
+    // ACTIVITY 2.3
+    function Riddle() {
+        var riddle_answer = prompt("Some months have 31 days, others have 30 days, but how many have 28 days?");
+        if(riddle_answer === "12") {
+    	    alert("Well done "+ hero_name+ "! You have defeated the riddler!");
+            document.body.innerHTML = `<img src="https://th.bing.com/th/id/OIP.31eZsm2jTgUOD475qmxWsQHaH_?pid=Api&rs=1">`;
+            document.writeln(`<button onclick="new_game()">Play again</button>`);
+        } else { 
+            alert("You answered wrongfully and "+ hero_name +" lost the battle!");
+            document.body.innerHTML = `<img src="https://st2.depositphotos.com/1575949/7956/v/950/depositphotos_79565150-stock-illustration-game-over-red-stamp-text.jpg" width = "700" height = "700">`
+            document.writeln(`<button onclick="new_game()">Play again</button>`);
+        }
+    }
+    function new_game() {
+        document.body.innerHTML = '';
+        introduction();
+    }
+
+</script>
