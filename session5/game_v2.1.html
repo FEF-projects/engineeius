@@ -10,16 +10,13 @@
 	
 	var answer_array = ['short', 'silence', 'stairs', 'blue paint', '12' ];
 	
-	function ask() {
-		// generate a random number between 0 and the size of our array
-		const index = Math.floor(Math.random() * 4);
-		// prompt the question and store the answer in a const
-		const user_answer = prompt(questions_array[index]);
-		// return if true or false
-		return user_answer === answer_array[index];
-	}
+	// 
+	document.writeln("<h1> WELCOME TO HERO MAKER 9000</h1>");
+	introduction();
 	
-    document.writeln("<h1> WELCOME TO HERO MAKER 9000</h1>");
+
+	
+	// starts the game
     function introduction() {
         hero_name = prompt("what is your name?");
         hero_location  = prompt("where are you located?");
@@ -27,8 +24,6 @@
         document.writeln(story_intro);
         document.write(`<button onclick="level1()">Continue</button>`);
     }
-    introduction();
-    
     function level1() {
 		document.body.innerHTML = '';
 		document.writeln("<h1> LEVEL 1 : The riddler</h1>");
@@ -56,6 +51,15 @@
         document.body.innerHTML = '';
         introduction();
     }
+	// new code
+	function ask() {
+		// generate a random number between 0 and the size of our array
+		const index = Math.floor(Math.random() * 4);
+		// prompt the question and store the answer in a const
+		const user_answer = prompt(questions_array[index]);
+		// return if true or false
+		return user_answer === answer_array[index];
+	}
 	function level2() {
 		const storyline = ` <h3> Thanks to you ${hero_name} the riddler has been defeated! <br> ${hero_location} still needs your help to defeat the remaining evil forces.<br> <h3>` ;
 		document.write(`<button onclick="ultron()">Continue</button>`);
@@ -73,12 +77,17 @@
 		while (!correct) {
 			var guess = prompt("ENTER 4 DIGITS PIN NUMBER:");
 			if(guess === password) {
-				correct = true;
+				alert("Well done "+ hero_name+ "! Ultron has been disabled!");
+				document.body.innerHTML = `<img src="https://th.bing.com/th/id/OIP.31eZsm2jTgUOD475qmxWsQHaH_?pid=Api&rs=1">`;
+				document.write(`<button onclick="new_game()">Play Again</button>`);
+				break;
 			} else {
 				alert(`The password is incorrect (o represents a correct digit, x reprensent an incorrect one): \n ${compare_pw(password, guess)}`);
 			}
 		}
+		return correct;
 	}
+	// Compare 2 strings in inputs, outputs a string showing which char are matching.
 	function compare_pw(pw, guess) {
 		console.log(pw);
 		console.log(guess);
