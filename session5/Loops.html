@@ -1,0 +1,45 @@
+<script>
+var some_numbers = [ 55, -95, 85, 66, 0, 87, 63, 44, 69, 42, 17];
+
+function min_forEach() {
+	var min =999;
+	some_numbers.forEach( function(num) {
+		if (num < min) min = num;
+	});
+	alert(min);
+}
+function min_for() {
+	var min =999;
+	for (var j = 0; j<some_numbers.length; ++j) {
+		if(some_numbers[j] < min) {
+			min = some_numbers[j];
+		}
+	}
+	alert(min);
+}
+function min_while() {
+	var min = 999;
+	var i =0;
+	while (i < some_numbers.length) {
+		if(some_numbers[i] < min) {
+			min = some_numbers[i];
+		}
+		i++;
+	}
+	alert(min);
+}
+function max_while() {
+	var max = -999;
+	var i = 0;
+	while (i < some_numbers.length) {
+		if(some_numbers[i] >max) {
+			max = some_numbers[i];
+		}
+		i++;
+	}
+	alert(max);
+}
+document.writeln(`<button onclick="min_for()"> for loop </button>`);
+document.writeln(`<button onclick="min_while()"> while loop </button>`);
+document.writeln(`<button onclick="min_forEach()"> forEach loop </button>`);
+</script>

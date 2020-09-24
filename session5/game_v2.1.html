@@ -74,7 +74,8 @@
 	function ultron_box() {
 		var correct = false;
 		const password = generate_password();
-		while (!correct) {
+		var i =0;
+		while (!correct && i <10) {
 			var guess = prompt("ENTER 4 DIGITS PIN NUMBER:");
 			if(guess === password) {
 				alert("Well done "+ hero_name+ "! Ultron has been disabled!");
