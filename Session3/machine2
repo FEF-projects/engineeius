@@ -1,0 +1,17 @@
+<script>
+// wrapping somethign by Number() will convert it to a number 
+var my_number = Number(prompt("please enter a number: "));
+function multiply3(in) {
+	return in * 3;
+}
+// we don't need to crreate a variable if we won't use it
+alert('your number multiplied by 3 is :' + multiply(my_number));
+
+// we can create another function to multiply by 4
+function multiply4(in) { return in * 4; }
+// those 2 functions are pretty similar , we can even make it more global
+function multiply(nb1, nb2) { return nb1 * nb2; }
+//we don't need to have 2 functions, e.g. to multiply my_number by 3 we just call multiply(my_number, 3).
+// try it below
+
+</script>
