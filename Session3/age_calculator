@@ -1,0 +1,18 @@
+<script>
+//modify this line to be equal to the current year
+const current_year = 2020;
+
+var name = prompt("what is your name?");
+var birth_year = prompt('Hello ' + name + ', What year were you born?');
+
+alert(name + "! you must be " + age_calc(birth_year) + " years old");
+var target_age = prompt("I wanna know what year I would be __ years old:");
+
+function age_calc(year) {
+  return 2020 - year;
+}
+function target_year_calc(year, age) {
+  return year + age;
+}
+
+</script>
