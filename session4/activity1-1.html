@@ -1,12 +1,10 @@
-<script>
-    // inside the parentheses of a function declaration we find the inputs
-    function sayHello(name) {
-        // we can use the input as variable
-        return "hello " + name;
-    }
-    var name = prompt("What is your name?");
-    // we call our function (start the machine) and store the output in a variable
-    var alert_msg = sayHello(name);
-    // we use the output inside an alert message
-    alert(alert_msg);
-</script>
+<html>
+    <body>
+        <script>
+           function say_hello() {
+               alert("hello from HTML");
+           }
+        </script>
+        <button onclick="say_hello">Say hello</button>
+    </body>
+</html>
